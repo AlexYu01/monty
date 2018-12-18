@@ -1,11 +1,24 @@
 #include "monty.h"
 
+/**
+ * push - fake push
+ * @stack: a pointer to a pointer to the stack
+ * @line_number: holds the line the code is run
+ */
+
 void push(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
 	fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	exit(EXIT_FAILURE);
+	(void) line_number;
 }
+
+/**
+ * real_push - The real push: pushes a node to a stack
+ * @stack: a pointer to a pointer to the stack
+ * @line_number: holds the line the code is run
+ */
 
 void real_push(stack_t **stack, unsigned int line_number, char *n)
 {
@@ -26,6 +39,12 @@ void real_push(stack_t **stack, unsigned int line_number, char *n)
 	*stack = new;
 }
 
+/**
+ * pall - prints all elements in the stack
+ * @stack: a pointer to a pointer to the stack
+ * @line_number: holds the line the code is run
+ */
+
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
@@ -38,6 +57,12 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * pint - prints the top element in the stack
+ * @stack: a pointer to a pointer to the stack
+ * @line_number: holds the line the code is run
+ */
+
 void pint(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
@@ -47,6 +72,12 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", (*stack)->n);
 }
+
+/**
+ * pop - pops the top element of a stack
+ * @stack: a pointer to a pointer to the stack
+ * @line_number: holds the line the code is run
+ */
 
 void pop(stack_t **stack, unsigned int line_number)
 {
