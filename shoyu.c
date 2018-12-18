@@ -10,6 +10,12 @@ void proc_line(char *buffer, unsigned int line_number)
 	if (token != NULL)
 	{
 		f = get_op(token);
+		if (f == NULL)
+		{
+			fprintf(stderr, "L%u: unknown instruction %s\n",
+					line_number, token);
+			exit(EXIT_FAILURE);
+		}
 		if (f == push)
 		{
 			token = strtok_r(NULL, " ", &save_point);
