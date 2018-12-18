@@ -35,4 +35,5 @@ typedef struct instruction_s
 } instruction_t;
 
 extern stack_t *stack;
+void (*get_op(char *tok))(stack_t **stack, unsigned int line_number);
 #endif
