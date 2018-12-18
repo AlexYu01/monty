@@ -3,7 +3,8 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
-	(void) line_number;
+	fprintf(stderr, "L%u: usage: push integer\n", line_number);
+	exit(EXIT_FAILURE);
 }
 
 void real_push(stack_t **stack, unsigned int line_number, char *n)
