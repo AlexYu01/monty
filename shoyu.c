@@ -41,8 +41,9 @@ void (*get_op(char *tok))(stack_t **stack, unsigned int line_number)
 		{ "pall", pall },
 		{ "pint", pint },
 		{ "pop", pop },
-		{ "swap", swap},
-		{ "add", add},
+		{ "swap", swap },
+		{ "add", add },
+		{ "nop", nop },
 		{ NULL, NULL }
 	};
 	int i;
