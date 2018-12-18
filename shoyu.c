@@ -35,6 +35,7 @@ void (*get_op(char *tok))(stack_t **stack, unsigned int line_number)
 		{ "pall", pall },
 		{ "pint", pint },
 		{ "pop", pop },
+		{ "swap", swap},
 		{ NULL, NULL }
 	};
 	int i;
@@ -44,4 +45,5 @@ void (*get_op(char *tok))(stack_t **stack, unsigned int line_number)
 		if (strcmp(ops[i].opcode, tok) == 0)
 			return (ops[i].f);
 	}
+	return (NULL);
 }
