@@ -19,3 +19,18 @@ void swap(stack_t **stack, unsigned int line_number)
 	head->n = next->n;
 	next->n = temp;
 }
+
+void add(stack_t **stack, unsigned int line_number)
+{
+	int res;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	res = (*stack)->n + (*stack)->next->n;
+	pop(stack, line_number);
+	(*stack)->n = res;
+}
+
+
