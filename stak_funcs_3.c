@@ -1,3 +1,4 @@
+#include "monty.h"
 /**
  * mul - Takes the top two elements of the stack and multiple them. Result is
  * stored at the top of the stack. The stack will be one shorter than before.
