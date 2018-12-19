@@ -36,7 +36,7 @@ void proc_line(char *buffer, unsigned int line_number)
 	void (*f)(stack_t **stack, unsigned int line_number);
 
 	token = strtok_r(buffer, " ", &save_point);
-	if (token != NULL)
+	if (token != NULL && token[0] != '#')
 	{
 		f = get_op(token);
 		if (f == NULL)
