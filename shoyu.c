@@ -49,7 +49,8 @@ void (*get_op(char *tok))(stack_t **stack, unsigned int line_number)
  *
  * Return: Void.
  */
-void proc_line(char *buffer, unsigned int line_number, stack_t **stack)
+void proc_line(char *buffer, unsigned int line_number, stack_t **stack, FILE
+*monty_file)
 {
 	char *token;
 	char *save_point;
@@ -69,7 +70,12 @@ void proc_line(char *buffer, unsigned int line_number, stack_t **stack)
 		{
 			token = strtok_r(NULL, " ", &save_point);
 			if (token == NULL || check_num(token) == 0)
-				push(stack, line_number);
+				{
+					free_stack(*stack);
+					free(buffer);
+					fclose(monty_file);
+					push(stack, line_number);
+				}
 			real_push(stack, token);
 		}
 		else
