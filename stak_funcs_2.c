@@ -14,7 +14,8 @@ void swap(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		misc[ERROR_IDX] = 1;
+		return;
 	}
 
 	head = *stack;
@@ -36,7 +37,8 @@ void add(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		misc[ERROR_IDX] = 1;
+		return;
 	}
 	res = (*stack)->n + (*stack)->next->n;
 	pop(stack, line_number);
@@ -56,7 +58,8 @@ void sub(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		misc[ERROR_IDX] = 1;
+		return;
 	}
 	res = (*stack)->next->n - (*stack)->n;
 	pop(stack, line_number);
@@ -80,12 +83,14 @@ void _div(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		misc[ERROR_IDX] = 1;
+		return;
 	}
 	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
-		exit(EXIT_FAILURE);
+		misc[ERROR_IDX] = 1;
+		return;
 	}
 
 	res = (*stack)->next->n / (*stack)->n;

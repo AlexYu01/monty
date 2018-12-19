@@ -64,19 +64,21 @@ void proc_line(char *buffer, unsigned int line_number, stack_t **stack)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 					line_number, token);
-			exit(EXIT_FAILURE);
+			misc[ERROR_IDX] = 1;
+			return;
 		}
 		if (f == push)
 		{
 			token = strtok_r(NULL, " ", &save_point);
 			if (token == NULL || check_num(token) == 0)
-				push(stack, line_number);
-			real_push(stack, token);
+			{
+				fprintf(stderr, "L%u: usage: push integer\n",
+						line_number);
+				misc[ERROR_IDX] = 1;
+				return;
+			}
+			misc[N_IDX] = atoi(token);
 		}
-		else
-		{
-			f(stack, line_number);
-		}
+		f(stack, line_number);
 	}
 }
-
