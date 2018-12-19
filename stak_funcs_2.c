@@ -11,7 +11,6 @@ void swap(stack_t **stack, unsigned int line_number)
 	stack_t *next;
 	int temp;
 
-
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
@@ -25,7 +24,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	next->n = temp;
 }
 /**
- * add - adds the top two elements and pops the top and stores it in the new top
+ * add - add the top two elements and pops the top and stores it in the new top
  * @stack: a pointer to a pointer to the stack
  * @line_number: holds the line the code is run
  */
@@ -33,6 +32,7 @@ void swap(stack_t **stack, unsigned int line_number)
 void add(stack_t **stack, unsigned int line_number)
 {
 	int res;
+
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
@@ -43,7 +43,8 @@ void add(stack_t **stack, unsigned int line_number)
 	(*stack)->n = res;
 }
 /**
- * sub - subtract the top two elements and pops the top and stores it in the new top
+ * sub - subtract the top two elements and pops the top and stores it in
+ * the new top
  * @stack: a pointer to a pointer to the stack
  * @line_number: holds the line the code is run
  */
@@ -51,6 +52,7 @@ void add(stack_t **stack, unsigned int line_number)
 void sub(stack_t **stack, unsigned int line_number)
 {
 	int res;
+
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
@@ -62,8 +64,8 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divides the top two elements and pops the top and stores the result in
- * the new top.
+ * _div - divides the top two elements and pops the top and stores the
+ * result in the new top.
  *
  * @stack: a pointer to a pointer to the stack
  * @line_number: holds the line the code is run
@@ -74,6 +76,7 @@ void sub(stack_t **stack, unsigned int line_number)
 void _div(stack_t **stack, unsigned int line_number)
 {
 	int res;
+
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
