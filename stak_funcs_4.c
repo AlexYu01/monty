@@ -11,18 +11,11 @@
  */
 void rotl(stack_t **stack, unsigned int line_number)
 {
-	int res;
 	stack_t *last_ptr;
 	stack_t *head;
 	stack_t *next;
 
-
-	if (stack == NULL || *stack == NULL)
-	{
-		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	if ((*stack)->next == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NUL)
 		return;
 	last_ptr = *stack;
 	head = *stack;
@@ -33,5 +26,5 @@ void rotl(stack_t **stack, unsigned int line_number)
 	last_ptr->next = head;
 	head->next = NULL;
 	head->prev = last_ptr;
-	head = next;
+	*stack = next;
 }
