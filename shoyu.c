@@ -9,6 +9,7 @@
 void (*get_op(char *tok))(stack_t **stack, unsigned int line_number)
 {
 	instruction_t ops[] = {
+		{ "rotr", rotr},
 		{ "rotl", rotl},
 		{ "pchar", pchar},
 		{ "pstr", pstr},
