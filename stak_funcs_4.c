@@ -38,7 +38,7 @@ void rotl(stack_t **stack, unsigned int line_number)
  *
  * Return: Void.
  */
-void rotl(stack_t **stack, unsigned int line_number)
+void rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *last_ptr;
 	stack_t *head;
@@ -55,7 +55,6 @@ void rotl(stack_t **stack, unsigned int line_number)
 	last_ptr->next = head;
 	last_ptr->prev = NULL;
 	*stack = last_ptr;
-	
 }
 /**
  * stack_set - Sets the format of the data to a stack. This is the default
