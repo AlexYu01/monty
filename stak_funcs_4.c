@@ -14,8 +14,9 @@ void rotl(stack_t **stack, unsigned int line_number)
 	stack_t *last_ptr;
 	stack_t *head;
 	stack_t *next;
+	(void)line_number;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NUL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		return;
 	last_ptr = *stack;
 	head = *stack;
