@@ -35,7 +35,9 @@ typedef struct instruction_s
 } instruction_t;
 
 extern stack_t *stack;
+
 void (*get_op(char *tok))(stack_t **stack, unsigned int line_number);
+
 void push(stack_t **stack, unsigned int line_number);
 void real_push(stack_t **stack, unsigned int line_number, char *n);
 void pall(stack_t **stack, unsigned int line_number);
@@ -44,7 +46,9 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-
 void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+
 char check_num(char *num);
 #endif
