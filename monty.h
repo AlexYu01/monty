@@ -37,9 +37,10 @@ typedef struct instruction_s
 extern stack_t *stack;
 
 void (*get_op(char *tok))(stack_t **stack, unsigned int line_number);
+void proc_line(char *buffer, unsigned int line_number);
 
 void push(stack_t **stack, unsigned int line_number);
-void real_push(stack_t **stack, unsigned int line_number, char *n);
+void real_push(stack_t **stack, char *n);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
