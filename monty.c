@@ -3,13 +3,21 @@
 stack_t *stack = NULL;
 void free_stack(stack_t *stack);
 
+/**
+ * main - Process Monty byte codes from a file passed in as an argument.
+ *
+ * @argc: The number of arguments passed to the program.
+ * @argv: A double pointer containing the arguments passed.
+ *
+ * Return: EXIT_SUCCESS if no errors encountered..
+ */
 int main(int argc, char **argv)
 {
 	FILE *monty_file;
-	ssize_t len;
 	char *buffer = NULL;
+	ssize_t len;
 	size_t n;
-	unsigned int line_number= 0;
+	unsigned int line_number = 0;
 
 	if (argc != 2)
 	{
@@ -38,12 +46,20 @@ int main(int argc, char **argv)
 	free(buffer);
 	free_stack(stack);
 	fclose(monty_file);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
+/**
+ * free_stack - Frees up the memory allocated for the stack.
+ *
+ * @stack: Pointer to the beginning of the stack.
+ *
+ * Return: Void.
+ */
 void free_stack(stack_t *stack)
 {
 	stack_t *next;
+
 	while (stack != NULL)
 	{
 		next = stack->next;
