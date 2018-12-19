@@ -33,5 +33,5 @@ void rotl(stack_t **stack, unsigned int line_number)
 	last_ptr->next = head;
 	head->next = NULL;
 	head->prev = last_ptr;
-	head = next;
+	*stack = next;
 }
