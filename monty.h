@@ -34,10 +34,13 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *stack;
+extern char mode;
+
+#define STAK_MODE 1
+#define QUEU_MODE 0
 
 void (*get_op(char *tok))(stack_t **stack, unsigned int line_number);
-void proc_line(char *buffer, unsigned int line_number);
+void proc_line(char *buffer, unsigned int line_number, stack_t **stack);
 
 void push(stack_t **stack, unsigned int line_number);
 void real_push(stack_t **stack, char *n);
@@ -54,6 +57,8 @@ void _div(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
-
+void rotr(stack_t **stack, unsigned int line_number);
+void stack_set(stack_t **stack, unsigned int line_number);
+void queue_set(stack_t **stack, unsigned int line_number);
 char check_num(char *num);
 #endif
