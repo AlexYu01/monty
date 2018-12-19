@@ -29,3 +29,38 @@ void rotl(stack_t **stack, unsigned int line_number)
 	head->prev = last_ptr;
 	*stack = next;
 }
+
+/**
+ * stack_set - Sets the format of the data to a stack. This is the default
+ * behavior of the program. Anything pushed after the stack opcode will follow
+ * the LIFO style.
+ *
+ * @stack: Double pointer to the top of the stack.
+ * @line_number: Line number of where the stack opcode is in the file.
+ *
+ * Return: Void.
+ */
+void stack_set(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+
+	mode = STAK_MODE;
+}
+
+/**
+ * queue_set - Sets the format of the data to a queue. Anything pushed after
+ * the queue opcode will follow the FIFO style.
+ *
+ * @stack: Double pointer to the top of the stack.
+ * @line_number: Line number of where the stack opcode is in the file.
+ *
+ * Return: Void.
+ */
+void queue_set(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+
+	mode = QUEU_MODE;
+}

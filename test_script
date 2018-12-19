@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for file in ./bytecodes/*
+	do
+		echo "---Test: $file ---"
+		./a.out "$file"
+		echo ---End---
+		echo
+done
