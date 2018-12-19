@@ -16,13 +16,13 @@ void push(stack_t **stack, unsigned int line_number)
 /**
  * real_push - The real push: pushes a node to a stack
  * @stack: a pointer to a pointer to the stack
- * @line_number: holds the line the code is run
  * @n: Pointer to string containing a number.
  */
 
-void real_push(stack_t **stack, unsigned int line_number, char *n)
+void real_push(stack_t **stack, char *n)
 {
 	stack_t *new;
+	stack_t *end;
 
 	new = malloc(sizeof(stack_t));
 
@@ -34,10 +34,29 @@ void real_push(stack_t **stack, unsigned int line_number, char *n)
 
 	new->n = atoi(n);
 	new->prev = NULL;
-	new->next = (*stack);
-	if (*stack)
-		(*stack)->prev = new;
-	*stack = new;
+	new->next = NULL;
+	if (mode == STAK_MODE)
+	{
+		new->next = (*stack);
+		if (*stack)
+			(*stack)->prev = new;
+		*stack = new;
+	}
+	else
+	{
+		if (*stack == NULL)
+		{
+			*stack = new;
+		}
+		else
+		{
+			end = *stack;
+			while (end->next != NULL)
+				end = end->next;
+			end->next = new;
+			new->prev = end;
+		}
+	}
 }
 
 /**
@@ -49,6 +68,7 @@ void real_push(stack_t **stack, unsigned int line_number, char *n)
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
+	(void) line_number;
 
 	while (head != NULL)
 	{

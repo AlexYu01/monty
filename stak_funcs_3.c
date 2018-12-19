@@ -91,9 +91,9 @@ void pchar(stack_t **stack, unsigned int line_number)
  */
 void pstr(stack_t **stack, unsigned int line_number)
 {
-	(void) line_number;
 	stack_t *current;
 	int ascii;
+	(void) line_number;
 
 	if (stack != NULL)
 	{

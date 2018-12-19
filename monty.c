@@ -1,7 +1,7 @@
 #include "monty.h"
 
-stack_t *stack = NULL;
 void free_stack(stack_t *stack);
+char mode = STAK_MODE;
 
 /**
  * main - Process Monty byte codes from a file passed in as an argument.
@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 	ssize_t len;
 	size_t n;
 	unsigned int line_number = 0;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -38,7 +39,7 @@ int main(int argc, char **argv)
 		line_number++;
 		if (buffer[len - 1] == '\n')
 			buffer[len - 1] = '\0';
-		proc_line(buffer, line_number);
+		proc_line(buffer, line_number, &stack);
 		free(buffer);
 		buffer = NULL;
 		len = getline(&buffer, &n, monty_file);

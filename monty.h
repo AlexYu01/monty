@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -34,17 +34,22 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *stack;
+extern char mode;
+
+#define STAK_MODE 1
+#define QUEU_MODE 0
 
 void (*get_op(char *tok))(stack_t **stack, unsigned int line_number);
+void proc_line(char *buffer, unsigned int line_number, stack_t **stack);
 
 void push(stack_t **stack, unsigned int line_number);
-void real_push(stack_t **stack, unsigned int line_number, char *n);
+void real_push(stack_t **stack, char *n);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
@@ -52,6 +57,8 @@ void _div(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
-
+void rotr(stack_t **stack, unsigned int line_number);
+void stack_set(stack_t **stack, unsigned int line_number);
+void queue_set(stack_t **stack, unsigned int line_number);
 char check_num(char *num);
 #endif

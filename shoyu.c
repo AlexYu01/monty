@@ -9,6 +9,7 @@
 void (*get_op(char *tok))(stack_t **stack, unsigned int line_number)
 {
 	instruction_t ops[] = {
+		{ "rotr", rotr},
 		{ "rotl", rotl},
 		{ "pchar", pchar},
 		{ "pstr", pstr},
@@ -18,10 +19,13 @@ void (*get_op(char *tok))(stack_t **stack, unsigned int line_number)
 		{ "pop", pop },
 		{ "swap", swap },
 		{ "add", add },
+		{ "sub", sub },
 		{ "mul", mul },
 		{ "div", _div },
 		{ "mod", mod },
 		{ "nop", nop },
+		{ "stack", stack_set },
+		{ "queue", queue_set },
 		{ NULL, NULL }
 	};
 	int i;
@@ -42,10 +46,11 @@ void (*get_op(char *tok))(stack_t **stack, unsigned int line_number)
  * @buffer: The line to process.
  * @line_number: The line number of the current line in the file that is being
  * processed.
+ * @stack: Double pointer to the beginning of the stack.
  *
  * Return: Void.
  */
-void proc_line(char *buffer, unsigned int line_number)
+void proc_line(char *buffer, unsigned int line_number, stack_t **stack)
 {
 	char *token;
 	char *save_point;
@@ -65,12 +70,12 @@ void proc_line(char *buffer, unsigned int line_number)
 		{
 			token = strtok_r(NULL, " ", &save_point);
 			if (token == NULL || check_num(token) == 0)
-				push(&stack, line_number);
-			real_push(&stack, line_number, token);
+				push(stack, line_number);
+			real_push(stack, token);
 		}
 		else
 		{
-			f(&stack, line_number);
+			f(stack, line_number);
 		}
 	}
 }
