@@ -1,6 +1,5 @@
 #include "monty.h"
 
-void free_stack(stack_t *stack);
 char mode = STAK_MODE;
 
 /**
@@ -39,7 +38,7 @@ int main(int argc, char **argv)
 		line_number++;
 		if (buffer[len - 1] == '\n')
 			buffer[len - 1] = '\0';
-		proc_line(buffer, line_number, &stack);
+		proc_line(buffer, line_number, &stack, monty_file);
 		free(buffer);
 		buffer = NULL;
 		len = getline(&buffer, &n, monty_file);
