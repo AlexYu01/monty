@@ -16,6 +16,8 @@ void (*get_op(char *tok))(stack_t **stack, unsigned int line_number)
 		{ "swap", swap },
 		{ "add", add },
 		{ "mul", mul },
+		{ "div", _div },
+		{ "mod", mod },
 		{ "nop", nop },
 		{ NULL, NULL }
 	};

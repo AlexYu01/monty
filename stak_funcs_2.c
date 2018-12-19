@@ -60,6 +60,36 @@ void sub(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	(*stack)->n = res;
 }
+
+/**
+ * div - divides the top two elements and pops the top and stores the result in
+ * the new top.
+ *
+ * @stack: a pointer to a pointer to the stack
+ * @line_number: holds the line the code is run
+ *
+ * Return: void
+ */
+
+void _div(stack_t **stack, unsigned int line_number)
+{
+	int res;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	res = (*stack)->next->n / (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n = res;
+}
+
 /**
  * nop - does nothing
  * @stack: a pointer to a pointer to the stack
