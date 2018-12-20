@@ -69,7 +69,7 @@ void proc_line(char *buffer, unsigned int line_number, stack_t **stack)
 		}
 		if (f == push)
 		{
-			token = strtok_r(NULL, " ", &save_point);
+			token = strtok_r(NULL, " \t\n", &save_point);
 			if (token == NULL || check_num(token) == 0)
 			{
 				fprintf(stderr, "L%u: usage: push integer\n",
