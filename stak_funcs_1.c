@@ -1,41 +1,32 @@
 #include "monty.h"
 
 /**
- * push - fake push
+ * push - Pushes a node to a datastructure. FIFO for queue mode, LIFO for stack
+ * mode.
+ *
  * @stack: a pointer to a pointer to the stack
- * @line_number: holds the line the code is run
+ * @line_number: Pointer to string containing a number.
  */
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	(void) stack;
-	fprintf(stderr, "L%u: usage: push integer\n", line_number);
-	exit(EXIT_FAILURE);
-}
-
-/**
- * real_push - The real push: pushes a node to a stack
- * @stack: a pointer to a pointer to the stack
- * @n: Pointer to string containing a number.
- */
-
-void real_push(stack_t **stack, char *n)
-{
 	stack_t *new;
 	stack_t *end;
+	(void) line_number;
 
 	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		misc[ERROR_IDX] = 1;
+		return;
 	}
 
-	new->n = atoi(n);
+	new->n = misc[N_IDX];
 	new->prev = NULL;
 	new->next = NULL;
-	if (mode == STAK_MODE)
+	if (misc[MODE_IDX] == STAK_MODE)
 	{
 		new->next = (*stack);
 		if (*stack)
@@ -89,7 +80,8 @@ void pint(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		misc[ERROR_IDX] = 1;
+		return;
 	}
 	printf("%d\n", (*stack)->n);
 }
@@ -107,7 +99,8 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
+		misc[ERROR_IDX] = 1;
+		return;
 	}
 
 	head = *stack;
