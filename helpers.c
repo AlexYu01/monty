@@ -9,7 +9,11 @@ char check_num(char *num)
 {
 	unsigned int i;
 
-	for (i = 0; num[i] != '\0'; i++)
+	if (num[0] == '-')
+		i = 1;
+	else
+		i = 0;
+	for (; num[i] != '\0'; i++)
 	{
 		if (num[i] > '9' || num[i] < '0')
 			return (0);
