@@ -46,7 +46,6 @@ extern int misc[];
 
 void (*get_op(char *tok))(stack_t **stack, unsigned int line_number);
 void proc_line(char *buffer, unsigned int line_number, stack_t **stack);
-void free_stack(stack_t *stack);
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
