@@ -45,8 +45,7 @@ extern int misc[];
 #define QUEU_MODE 0
 
 void (*get_op(char *tok))(stack_t **stack, unsigned int line_number);
-void proc_line(char *buffer, unsigned int line_number, stack_t **stack, FILE
-*monty_file);
+void proc_line(char *buffer, unsigned int line_number, stack_t **stack);
 void free_stack(stack_t *stack);
 
 void push(stack_t **stack, unsigned int line_number);
