@@ -71,7 +71,7 @@ void stack_set(stack_t **stack, unsigned int line_number)
 	(void) stack;
 	(void) line_number;
 
-	mode = STAK_MODE;
+	misc[MODE_IDX] = STAK_MODE;
 }
 
 /**
@@ -88,5 +88,5 @@ void queue_set(stack_t **stack, unsigned int line_number)
 	(void) stack;
 	(void) line_number;
 
-	mode = QUEU_MODE;
+	misc[MODE_IDX] = QUEU_MODE;
 }

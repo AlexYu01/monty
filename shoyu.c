@@ -57,7 +57,7 @@ void proc_line(char *buffer, unsigned int line_number, stack_t **stack, FILE
 	char *save_point;
 	void (*f)(stack_t **stack, unsigned int line_number);
 
-	token = strtok_r(buffer, " ", &save_point);
+	token = strtok_r(buffer, " \t\n", &save_point);
 	if (token != NULL && token[0] != '#')
 	{
 		f = get_op(token);
@@ -65,24 +65,21 @@ void proc_line(char *buffer, unsigned int line_number, stack_t **stack, FILE
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 					line_number, token);
-			exit(EXIT_FAILURE);
+			misc[ERROR_IDX] = 1;
+			return;
 		}
 		if (f == push)
 		{
-			token = strtok_r(NULL, " ", &save_point);
+			token = strtok_r(NULL, " \t\n", &save_point);
 			if (token == NULL || check_num(token) == 0)
-				{
-					free_stack(*stack);
-					free(buffer);
-					fclose(monty_file);
-					push(stack, line_number);
-				}
-			real_push(stack, token);
+			{
+				fprintf(stderr, "L%u: usage: push integer\n",
+						line_number);
+				misc[ERROR_IDX] = 1;
+				return;
+			}
+			misc[N_IDX] = atoi(token);
 		}
-		else
-		{
-			f(stack, line_number);
-		}
+		f(stack, line_number);
 	}
 }
-
